@@ -16,6 +16,8 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import two.ses.donorapplication.Fragments.CharityFragment;
+import two.ses.donorapplication.Fragments.MapFragment;
 import two.ses.donorapplication.Fragments.SearchFragment;
 import two.ses.donorapplication.Fragments.UserInformationFragment;
 import two.ses.donorapplication.Fragments.ViewBookingsFragment;
@@ -35,10 +37,12 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
 
     private FragmentManager fragmentManager;
+
     /**
      * TAG to use
      */
     private static String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,8 +115,13 @@ public class MainActivity extends AppCompatActivity
             ChangeFragment(new UserInformationFragment());
         } else if (id == R.id.nav_view_bookings) {
             ChangeFragment(new ViewBookingsFragment());
+        } else if (id == R.id.nav_view_map) {
+            ChangeFragment(new MapFragment());
+            //startActivity(new Intent(this, MapActivity.class));
         } else if (id == R.id.nav_search) {
             ChangeFragment(new SearchFragment());
+        } else if (id == R.id.nav_charity) {
+            ChangeFragment(new CharityFragment());
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
@@ -129,7 +138,7 @@ public class MainActivity extends AppCompatActivity
     private void ChangeFragment(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
+        // transaction.addToBackStack(null);
         transaction.commit();
     }
 }
