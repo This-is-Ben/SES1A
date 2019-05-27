@@ -1,6 +1,7 @@
 package two.ses.donorapplication.Fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,9 +11,15 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import two.ses.donorapplication.Model.User;
 import two.ses.donorapplication.R;
 
 /**
@@ -43,12 +50,14 @@ public class UserInformationFragment extends Fragment {
     TextView addressTV;
 
     private FirebaseAuth mAuth;
+    private DatabaseReference dr;
+    private FirebaseDatabase mFirebaseDatabase;
+    private String userId;
+
+
 
     public UserInformationFragment() {
-        FirebaseUser user = mAuth.getCurrentUser();
 
-        nameTV.setText("Name:");
-        emailTV.setText("Email:" + user.getEmail());
     }
 
     @Override
@@ -56,6 +65,31 @@ public class UserInformationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         // Note the use of getActivity() to reference the Activity holding this fragment
         getActivity().setTitle("User Information");
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        dr = mFirebaseDatabase.getReference("User").child(mAuth.getCurrentUser().getUid());
+        FirebaseUser user = mAuth.getCurrentUser();
+        userId = mAuth.getCurrentUser().getUid();
+
+        dr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                nameTV.setText("Name:" + user.getName());
+                emailTV.setText("Email:" + user.getEmail());
+                groupTV.setText("Group: " + user.getGroup());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
+        // .child("User").child(userId).child("group").get
+
     }
 
     @Override
