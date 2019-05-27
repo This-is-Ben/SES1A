@@ -10,15 +10,22 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="-58dp">
 
         <EditText
             android:id="@+id/nameET"
-            android:layout_width="@dimen/edit_text_width"
+            android:layout_width="254dp"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/emailET"
             android:layout_centerHorizontal="true"
+            android:layout_marginStart="-6dp"
+            android:layout_marginTop="68dp"
             android:hint="@string/register_name_txt"
-            android:layout_marginTop="100dp" />
+            android:layout_alignLeft="@+id/emailET"
+            android:layout_marginLeft="-6dp" />
 
         <RadioGroup
             android:id="@+id/rgroup"
@@ -26,53 +33,82 @@
             android:layout_height="100dp"
             android:layout_below="@+id/nameET"
             android:layout_marginLeft="75dp">
+
             <RadioButton
                 android:id="@+id/charityButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/register_charity_txt"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:text="@string/register_charity_txt" />
+
             <RadioButton
                 android:id="@+id/donorButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/register_donor_txt"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:text="@string/register_donor_txt" />
         </RadioGroup>
+
         <EditText
             android:id="@+id/emailET"
             android:layout_width="@dimen/edit_text_width"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/register_email_txt"
             android:layout_below="@+id/rgroup"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="20dp"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="@string/register_email_txt"
+            android:inputType="textEmailAddress" />
+
         <EditText
             android:id="@+id/passwordET"
             android:layout_width="@dimen/edit_text_width"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/register_password_txt"
             android:layout_below="@+id/emailET"
-            android:inputType="textPassword"
-            android:layout_marginTop="20dp"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="@string/register_password_txt"
+            android:inputType="textPassword" />
+
         <EditText
             android:id="@+id/confirmET"
             android:layout_width="@dimen/edit_text_width"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/register_password_confirm_txt"
             android:layout_below="@+id/passwordET"
-            android:inputType="textPassword"
-            android:layout_marginTop="20dp"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="@string/register_password_confirm_txt"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/phoneET"
+            android:layout_width="250dp"
+            android:layout_height="38dp"
+            android:layout_below="@+id/confirmET"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/addressET"
+            android:layout_width="253dp"
+            android:layout_height="39dp"
+            android:layout_below="@+id/phoneET"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:hint="Address"
+            android:inputType="textPostalAddress" />
+
         <Spinner
             android:id="@+id/categoriesSP"
             android:layout_width="@dimen/edit_text_width"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/confirmET"
+            android:layout_below="@+id/addressET"
+            android:layout_alignStart="@+id/nameET"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true">
+            android:layout_alignLeft="@+id/nameET"
+            android:layout_marginLeft="8dp">
 
         </Spinner>
 
@@ -80,9 +116,20 @@
             android:id="@+id/register_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/confirm_txt"
             android:layout_below="@+id/categoriesSP"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="25dp"
+            android:text="@string/confirm_txt" />
+
+
+        <!--
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/edit_text_width"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register_btn"
+            android:layout_centerHorizontal="true" />
+        -->
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

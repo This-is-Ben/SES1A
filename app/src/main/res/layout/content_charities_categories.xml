@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Activities.CharityListActivity"
+    tools:showIn="@layout/activity_charity_category_view">
+
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".CharityListActivity">
+
+<!--
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:background="@color/common_google_signin_btn_text_light_disabled">
+            <requestFocus />
+        </SearchView>
+
+        <TextView
+            android:id="@+id/searchTV"
+            style="@style/LoginStyles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:labelFor="@id/emailET"
+            android:text="Search By" />
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/searchTV"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
+            android:indeterminate="true"
+            android:visibility="gone" />
+-->
+        <ListView
+            android:id="@+id/lvCharities"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

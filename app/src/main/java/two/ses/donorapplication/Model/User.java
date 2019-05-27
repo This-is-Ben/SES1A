@@ -1,17 +1,22 @@
 package two.ses.donorapplication.Model;
 
 public class User {
-    private String name,email,group;
-    private String[] eventIDS;
+    private String name;
+    private String email;
+    private String group;
+    private String address;
+    private Integer phone;
+
     public User(){
 
     }
 
-    public User(String name, String email, String group, String[] eventIDS){
+    public User(String name, String email, String group, String address, Integer phone) {
         this.name = name;
         this.email = email;
         this.group = group;
-        this.eventIDS = eventIDS;
+        this.address = address;
+        this.phone = phone;
     }
 
     public void setName(String name) {
@@ -26,8 +31,12 @@ public class User {
         this.group = group;
     }
 
-    public void setEventIDS(Event[] events){
-        this.eventIDS = eventIDS;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPhone(Integer phone) {
+        this.phone = phone;
     }
 
     public String getName() {
@@ -42,7 +51,17 @@ public class User {
         return group;
     }
 
-    public String[] getEventIDS() {return eventIDS;}
+    public String getAddress() {
+        return address;
+    }
+
+    public Integer getPhone() {
+        return phone;
+    }
+//    public void setEventIDS(Event[] events){
+//        this.eventIDS = eventIDS;
+//    }
+//    public String[] getEventIDS() {return eventIDS;}
 }
 
 

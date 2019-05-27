@@ -2,10 +2,19 @@ package two.ses.donorapplication.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.passwordET)
     EditText passwordEditText;
+
+    private FirebaseAuth mAuth;
+
     /**
      * It is helpful to create a tag for every activity/fragment. It will be easier to understand
      * log messages by having different tags on different places.
@@ -42,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
 
         //Sets title
         setTitle(R.string.login_activity_title);
+        // get instance of mAuth
+        FirebaseApp.initializeApp(LoginActivity.this);
+        mAuth = FirebaseAuth.getInstance();
     }
 
     /**
@@ -50,22 +65,42 @@ public class LoginActivity extends AppCompatActivity {
      */
     @OnClick(R.id.login_btn)
     public void LogIn() {
-        String username = emailEditText.getText().toString();
+        String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-
-        // TODO: For now, the login button will simply print on the console the username/password and let you in
-        // TODO: It is up to you guys to implement a proper login system
 
         // Having a tag, and the name of the function on the console message helps allot in
         // knowing where the message should appear.
-        Log.d(TAG, "LogIn: username: " + username + " password: " + password);
+        Log.d(TAG, "LogIn: username: " + email + " password: " + password);
+        if(email.isEmpty()){
+            toastMessage("Email is empty");
+            return;
+        } if(password.isEmpty()){
+            toastMessage("Password is empty");
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            //FirebaseDatabase.getInstance().getReference("User");
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
 
 
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            toastMessage("Authentication failed.");
+                        }
+                    }
+                });
 
         // Start a new activity
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+
     }
 
     @OnClick(R.id.register_btn)
@@ -75,4 +110,10 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    private void toastMessage(String message){
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+
 }

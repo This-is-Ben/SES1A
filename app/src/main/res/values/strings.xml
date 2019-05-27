@@ -33,6 +33,16 @@
     <string name="register_password_confirm_txt">Confirm password</string>
     <string name="confirm_txt">Register</string>
 
+    <!--User information -->
+    <string name="group_txt">Group:</string>
+    <string name="phone_txt">Phone Number:</string>
+    <string name="address_txt">Address:</string>
+
+    <string name="charity_search">Charity Search</string>
+    <string name="view_map">Map View</string>
+    <string name="google_map_api_key">AIzaSyD-yZ8Tiy7pBuRBQ7EkxbKgpJSwngI4iuA</string>
+    <string name="charity_search_donor">Input the Charity Name to Search Donor:</string>
+
     <string-array name="categories">
         <item>Animals</item>
         <item>Arts,Culture,Humanities</item>
