@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import two.ses.donorapplication.Model.CharityModel;
 import two.ses.donorapplication.R;
 
@@ -20,6 +22,7 @@ public class CharityDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charity_details);
+        ButterKnife.bind(this);
         init();
     }
 
@@ -47,5 +50,11 @@ public class CharityDetailsActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @OnClick(R.id.btn_booking)
+    public void addBooking(){
+        Intent i = new Intent(this, SelectTime.class);
+        i.putExtra("Charity", tv_name.getText());
+        startActivity(i);
     }
 }

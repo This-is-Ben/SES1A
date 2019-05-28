@@ -122,7 +122,6 @@ public class RegisterActivity extends AppCompatActivity {
         final String address = addressEditText.getText().toString();
         final Integer phone = Integer.valueOf(phoneEditText.getText().toString());
         //Check which group is selected
-        progressDialog.show();
         radioButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
         final String group = radioButton.getText().toString();
         final String category = categoriesSpinner.getSelectedItem().toString();
@@ -184,7 +183,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
                                         toastMessage("User Registered Successfully");
-                                        progressDialog.dismiss();
                                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                         startActivity(intent);
                                         finish();

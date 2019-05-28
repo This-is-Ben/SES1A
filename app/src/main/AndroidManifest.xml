@@ -29,7 +29,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MainActivity" />
-
+        <activity
+            android:name=".Activities.SelectTime"
+            android:label="Select time"
+            android:theme="@style/NoActionBar"></activity>
+        <activity
+            android:name=".Activities.AddBooking"
+            android:label="Add Booking"
+            android:theme="@style/NoActionBar"></activity>
         <activity
             android:name=".Activities.CharityListActivity"
             android:screenOrientation="portrait"
@@ -42,6 +49,8 @@
             </intent-filter>
             -->
         </activity>
+
+
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
