@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import two.ses.donorapplication.R;
 
@@ -23,8 +21,8 @@ import two.ses.donorapplication.R;
  */
 public class SearchFragment extends Fragment {
     // Note how Butter Knife also works on Fragments, but here it is a little different
-    @BindView(R.id.blank_frag_msg)
-    TextView blankFragmentTV;
+    //@BindView(R.id.blank_frag_msg)
+    //TextView blankFragmentTV;
 
 
     public SearchFragment() {
@@ -55,6 +53,6 @@ public class SearchFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Now that the view has been created, we can use butter knife functionality
-        blankFragmentTV.setText("Welcome to this fragment");
+        //blankFragmentTV.setText("Welcome to this fragment");
     }
 }
