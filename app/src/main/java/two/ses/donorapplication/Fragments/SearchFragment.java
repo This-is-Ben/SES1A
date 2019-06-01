@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+<<<<<<< HEAD
 import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +29,10 @@ import java.util.ArrayList;
 import two.ses.donorapplication.Activities.DonorListActivity;
 import two.ses.donorapplication.Adapter.CharityAdapter;
 import two.ses.donorapplication.Model.CharityModel;
+=======
+
+import butterknife.ButterKnife;
+>>>>>>> dev
 import two.ses.donorapplication.R;
 
 /**
@@ -39,11 +44,17 @@ import two.ses.donorapplication.R;
  * <p>
  */
 public class SearchFragment extends Fragment {
+<<<<<<< HEAD
     private static final String TAG = "SearchFragment";
     private Context context;
     private View view;
     RecyclerView rv_charity;
     EditText input_charity_name;
+=======
+    // Note how Butter Knife also works on Fragments, but here it is a little different
+    //@BindView(R.id.blank_frag_msg)
+    //TextView blankFragmentTV;
+>>>>>>> dev
 
     ArrayList<CharityModel> charityOriginal, charityAdpModel;
     DatabaseReference CharityDataref;
@@ -117,6 +128,7 @@ public class SearchFragment extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
+<<<<<<< HEAD
     private void setdata() {
         adapter = new CharityAdapter(context, R.layout.inflate_charity_list, charityAdpModel, new CharityAdapter.OnCategoriesClickListener() {
             @Override
@@ -147,5 +159,12 @@ public class SearchFragment extends Fragment {
                 Log.e(TAG, "onCancelled: " + databaseError.getMessage());
             }
         });
+=======
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // Now that the view has been created, we can use butter knife functionality
+        //blankFragmentTV.setText("Welcome to this fragment");
+>>>>>>> dev
     }
 }

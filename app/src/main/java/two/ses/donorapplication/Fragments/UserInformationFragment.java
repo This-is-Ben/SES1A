@@ -75,9 +75,17 @@ public class UserInformationFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+<<<<<<< HEAD
                 nameTV.setText("Name:" + user.getName());
                 emailTV.setText("Email:" + user.getEmail());
                 groupTV.setText("Group: " + user.getGroup());
+=======
+                if(user != null) {
+                    nameTV.setText("Name:" + user.getName());
+                    emailTV.setText("Email:" + user.getEmail());
+                    groupTV.setText("Group: " + user.getGroup());
+                }
+>>>>>>> dev
             }
 
             @Override
