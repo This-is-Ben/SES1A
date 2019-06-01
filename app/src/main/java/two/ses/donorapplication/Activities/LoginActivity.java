@@ -71,6 +71,15 @@ public class LoginActivity extends AppCompatActivity {
         // Having a tag, and the name of the function on the console message helps allot in
         // knowing where the message should appear.
         Log.d(TAG, "LogIn: username: " + email + " password: " + password);
+<<<<<<< HEAD
+        if(email.isEmpty()){
+            toastMessage("Email is empty");
+            return;
+        } if(password.isEmpty()){
+            toastMessage("Password is empty");
+            return;
+        }
+=======
      if(email.isEmpty()){
          toastMessage("Email is empty");
          return;
@@ -78,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
          toastMessage("Password is empty");
          return;
      }
+>>>>>>> dev
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {

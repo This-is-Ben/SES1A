@@ -16,6 +16,8 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import two.ses.donorapplication.Fragments.CharityFragment;
+import two.ses.donorapplication.Fragments.MapFragment;
 import two.ses.donorapplication.Fragments.SearchFragment;
 import two.ses.donorapplication.Fragments.UserInformationFragment;
 import two.ses.donorapplication.Fragments.ViewBookingsFragment;
@@ -113,12 +115,12 @@ public class MainActivity extends AppCompatActivity
             ChangeFragment(new ViewBookingsFragment());
         } else if (id == R.id.nav_search) {
             ChangeFragment(new SearchFragment());
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_view_map) {
+            ChangeFragment(new MapFragment());
+        } else if (id == R.id.nav_search) {
+            ChangeFragment(new SearchFragment());
+        } else if (id == R.id.nav_charity) {
+            ChangeFragment(new CharityFragment());
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -127,7 +129,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void ChangeFragment(Fragment fragment) {
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();

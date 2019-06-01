@@ -30,7 +30,6 @@ import two.ses.donorapplication.R;
  * This fragment's job will be that to display Users information, and be able to edit that
  * information (either edit it in this fragment or a new fragment, up to you!)
  * <p>
-
  */
 public class UserInformationFragment extends Fragment {
     // Note how Butter Knife also works on Fragments, but here it is a little different
@@ -76,11 +75,17 @@ public class UserInformationFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+<<<<<<< HEAD
+                nameTV.setText("Name:" + user.getName());
+                emailTV.setText("Email:" + user.getEmail());
+                groupTV.setText("Group: " + user.getGroup());
+=======
                 if(user != null) {
                     nameTV.setText("Name:" + user.getName());
                     emailTV.setText("Email:" + user.getEmail());
                     groupTV.setText("Group: " + user.getGroup());
                 }
+>>>>>>> dev
             }
 
             @Override

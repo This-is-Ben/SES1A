@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/corners_bg"
+    android:layout_margin="10dp"
+    android:elevation="4dp"
+    android:padding="4dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: "
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:id="@+id/dateTvInLv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:text="date"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time: "
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:id="@+id/timeTvInLv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="time"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="2dp">
+
+            <TextView
+                android:id="@+id/membersTvInLv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:text="Members:"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:id="@+id/userTvInLv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/membersTvInLv"
+                android:gravity="center"
+                android:text="user"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp" />
+
+            <TextView
+                android:id="@+id/charityTvInLv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userTvInLv"
+                android:gravity="center"
+                android:text="charity"
+                android:textSize="14sp"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+</LinearLayout>

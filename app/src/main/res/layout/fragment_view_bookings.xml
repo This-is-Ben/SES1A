@@ -5,11 +5,35 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.ViewBookingsFragment">
 
+<<<<<<< HEAD
+    <LinearLayout
+=======
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/blank_frag_msg"
+>>>>>>> dev
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:padding="3dp"
+        android:background="#fff"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Delete"
+            android:layout_below="@+id/list_view"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
 
 </FrameLayout>
