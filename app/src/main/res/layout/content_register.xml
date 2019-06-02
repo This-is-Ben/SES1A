@@ -12,20 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="-58dp">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
             android:id="@+id/nameET"
             android:layout_width="254dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/emailET"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="-6dp"
-            android:layout_marginTop="68dp"
-            android:hint="@string/register_name_txt"
             android:layout_alignLeft="@+id/emailET"
-            android:layout_marginLeft="-6dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="-7dp"
+            android:layout_marginLeft="-7dp"
+            android:layout_marginTop="20dp"
+            android:hint="@string/register_name_txt" />
 
         <RadioGroup
             android:id="@+id/rgroup"
@@ -118,7 +117,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/categoriesSP"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
             android:text="@string/confirm_txt" />
 
 

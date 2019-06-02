@@ -63,5 +63,3 @@ public class User {
 //    }
 //    public String[] getEventIDS() {return eventIDS;}
 }
-
-
