@@ -3,7 +3,7 @@ package two.ses.donorapplication.Model;
 import java.io.Serializable;
 
 public class CharityModel implements Serializable {
-    String name, charityType, description, contact, address;
+    String name, charityType, description, contact, address, email;
 
     public CharityModel() {
     }
@@ -11,6 +11,13 @@ public class CharityModel implements Serializable {
     public CharityModel(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public CharityModel(String name, String  email, String contact, String address) {
+        this.name = name;
+        this.email = email;
+        this.contact = contact;
+        this.address = address;
     }
 
     public CharityModel(String name, String charityType , String description, String contact, String address) {
@@ -59,5 +66,11 @@ public class CharityModel implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmail() { return email; }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -46,7 +46,8 @@ public class SearchFragment extends Fragment {
     EditText input_charity_name;
 
     ArrayList<CharityModel> charityOriginal, charityAdpModel;
-    DatabaseReference CharityDataref;
+    ArrayList<String> donorIDS;
+    DatabaseReference CharityDataref, userRef;
     CharityAdapter adapter;
 
     public SearchFragment() {
@@ -74,9 +75,10 @@ public class SearchFragment extends Fragment {
 
         charityOriginal = new ArrayList<>();
         charityAdpModel = new ArrayList<>();
+        donorIDS = new ArrayList<>();
 
         CharityDataref = FirebaseDatabase.getInstance().getReference("Group");
-
+        userRef = FirebaseDatabase.getInstance().getReference("User");
         input_charity_name = view.findViewById(R.id.input_charity_name);
         rv_charity = view.findViewById(R.id.rv_charity);
         rv_charity.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
@@ -100,7 +102,7 @@ public class SearchFragment extends Fragment {
         });
 
         setdata();
-        readCharity();
+        getIDS();
     }
 
     private void filter(String data) {
@@ -122,22 +124,43 @@ public class SearchFragment extends Fragment {
             @Override
             public void onCategoriesClick(CharityModel model) {
                 Intent i = new Intent(context, DonorListActivity.class);
-                i.putExtra("charity", model.getName());
+                i.putExtra("desc", model);
                 startActivity(i);
             }
         });
         rv_charity.setAdapter(adapter);
     }
 
-    private void readCharity() {
-        CharityDataref.child("Charity").addListenerForSingleValueEvent(new ValueEventListener() {
+
+    private void getIDS() {
+        CharityDataref.child("donor").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.e(TAG, "onDataChange: " + dataSnapshot.getChildrenCount());
+                //Log.e(TAG, "onDataChange: " + dataSnapshot.getChildrenCount());
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    //Log.e(TAG, "onDataChange: " + snapshot.getKey());
-                    charityOriginal.add(new CharityModel(snapshot.getKey(), ""));
+                    Log.e(TAG, "onDataChange: " + snapshot.getKey());
+                    donorIDS.add(snapshot.getKey());
+                    readCharity(snapshot.getKey());
+                    Log.e(TAG, "onDataChange: " + donorIDS.size());
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(TAG, "onCancelled: " + databaseError.getMessage());
+            }
+        });
+    }
+
+    private void readCharity(String id) {
+        Log.e(TAG, "onDataChange read: " + id);
+        userRef.child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.e(TAG, "onDataChange: " + dataSnapshot.child("name").getValue(String.class) + dataSnapshot.child("email").getValue(String.class) +
+                        dataSnapshot.child("phone").getValue(Long.class).toString() + dataSnapshot.child("address").getValue(String.class));
+                charityOriginal.add(new CharityModel(dataSnapshot.child("name").getValue(String.class),dataSnapshot.child("email").getValue(String.class),
+                        dataSnapshot.child("phone").getValue(Long.class).toString(), dataSnapshot.child("address").getValue(String.class)));
                 charityAdpModel.addAll(charityOriginal);
                 adapter.notifyDataSetChanged();
             }
