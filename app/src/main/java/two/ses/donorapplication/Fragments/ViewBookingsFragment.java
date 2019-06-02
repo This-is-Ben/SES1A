@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -44,6 +45,8 @@ public class ViewBookingsFragment extends Fragment {
     ListView listView;
     @BindView(R.id.delete)
     Button deleteBtn;
+    @BindView(R.id.message_tv)
+    TextView  messageTV;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference uEventsRef,eventsRef;
@@ -92,6 +95,8 @@ public class ViewBookingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         // Now that the view has been created, we can use butter knife functionality
         deleteBtn.setEnabled(false);
+        deleteBtn.setVisibility(View.INVISIBLE);
+        messageTV.setVisibility(View.VISIBLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -146,7 +151,11 @@ public class ViewBookingsFragment extends Fragment {
                                 + "Charity: " + event.getCharityID();
 
                         Log.d("TAG", "Value is: " + record);
+                    }
                 }
+                if(!events.isEmpty()){
+                    deleteBtn.setVisibility(View.VISIBLE);
+                    messageTV.setVisibility(View.INVISIBLE);
                 }
                 EventListAdapter adapter = new EventListAdapter(getContext(), R.layout.listview_event_data, events);
                 listView.setAdapter(adapter);

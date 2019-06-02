@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
-
+                            finish();
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -108,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
         // Start a new activity to register new user
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-        finish();
     }
 
     private void toastMessage(String message){
