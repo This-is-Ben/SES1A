@@ -1,3 +1,2 @@
-.vscode
-.gradle/
-.idea/
+.gradle
+.idea
