@@ -20,13 +20,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import two.ses.donorapplication.Model.CharityModel;
 import two.ses.donorapplication.Model.User;
 import two.ses.donorapplication.R;
 
@@ -59,6 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private RadioButton radioButton;
     private ProgressDialog progressDialog;
+    private String count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +120,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     @OnClick(R.id.register_btn)
     public void Register(){
+        readCharity();
         final String username = emailEditText.getText().toString();
         final String password = passwordEditText.getText().toString();
         final String confirm = confirmEditText.getText().toString();
@@ -174,6 +180,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 //Add user to list of charities
                                 FirebaseDatabase.getInstance().getReference("Group").child("charity")
                                         .child(category).child(name).setValue(true);
+                                CharityModel charity = new CharityModel(name, category, "Description", phone.toString(), address);
+                                FirebaseDatabase.getInstance().getReference("AllCharity").child(count).setValue(charity);
                             }
                             //Add user to list of users
                             FirebaseDatabase.getInstance().getReference("User")
@@ -200,5 +208,20 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void toastMessage(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+    }
+
+    private void readCharity() {
+        FirebaseDatabase.getInstance().getReference("AllCharity").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Log.e(TAG, "onDataChange: " + dataSnapshot.getChildrenCount());
+                count = String.format("%s", dataSnapshot.getChildrenCount());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e(TAG, "onCancelled: " + databaseError.getMessage());
+            }
+        });
     }
 }
