@@ -79,6 +79,8 @@ public class UserInformationFragment extends Fragment {
                 nameTV.setText("Name:" + user.getName());
                 emailTV.setText("Email:" + user.getEmail());
                 groupTV.setText("Group: " + user.getGroup());
+                phoneTV.setText("Phone: " + user.getPhone());
+                addressTV.setText("Address: " + user.getAddress());
             }
 
             @Override
