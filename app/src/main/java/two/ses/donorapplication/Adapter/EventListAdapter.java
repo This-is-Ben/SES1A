@@ -1,4 +1,4 @@
-package two.ses.donorapplication;
+package two.ses.donorapplication.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import two.ses.donorapplication.Model.Event;
+import two.ses.donorapplication.R;
 
 public class EventListAdapter extends ArrayAdapter<Event> {
 

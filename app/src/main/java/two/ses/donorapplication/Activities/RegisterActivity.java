@@ -175,12 +175,12 @@ public class RegisterActivity extends AppCompatActivity {
                             if(group.equals("Donor")){
                                 //Add user to list of donors
                                 FirebaseDatabase.getInstance().getReference("Group").child("donor")
-                                        .child(name).setValue(true);
+                                        .child(mAuth.getCurrentUser().getUid()).setValue(true);
                             }else if (group.equals("Charity")){
                                 //Add user to list of charities
                                 FirebaseDatabase.getInstance().getReference("Group").child("charity")
                                         .child(category).child(name).setValue(true);
-                                CharityModel charity = new CharityModel(name, category, "Description", phone.toString(), address);
+                                CharityModel charity = new CharityModel(name, category, "", phone.toString(), address);
                                 FirebaseDatabase.getInstance().getReference("AllCharity").child(count).setValue(charity);
                             }
                             //Add user to list of users

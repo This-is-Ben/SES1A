@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import two.ses.donorapplication.EventListAdapter;
+import two.ses.donorapplication.Adapter.EventListAdapter;
 import two.ses.donorapplication.Model.Event;
 import two.ses.donorapplication.R;
 
