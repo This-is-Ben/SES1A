@@ -56,13 +56,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_register">RegisterActivity</string>
-<<<<<<< HEAD
     <string name="view_map">Map View</string>
-=======
 
     <!--User information -->
     <string name="group_txt">Group:</string>
     <string name="phone_txt">Phone Number:</string>
     <string name="address_txt">Address:</string>
->>>>>>> fix
 </resources>
