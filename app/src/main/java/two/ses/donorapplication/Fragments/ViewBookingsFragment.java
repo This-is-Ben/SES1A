@@ -136,8 +136,8 @@ public class ViewBookingsFragment extends Fragment {
                         Event event = new Event(ds.getKey(),
                                 ds.child("Date").getValue(String.class),
                                 ds.child("Time").getValue(String.class),
-                                ds.child("UserID").getValue(String.class),
-                                mAuth.getCurrentUser().getUid());
+                                ds.child("Donor Name").getValue(String.class),
+                                ds.child("Charity Name").getValue(String.class));
                         events.add(event);
 
                         String record = "Date: " + event.getDate() + "\n"

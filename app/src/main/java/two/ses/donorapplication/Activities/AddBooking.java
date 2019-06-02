@@ -12,19 +12,16 @@ import two.ses.donorapplication.R;
 
 public class AddBooking extends AppCompatActivity {
 
-    private static String date;
+    private String charityName, date;
     CalendarView calendarView;
     Button confirmDateBtn;
-
-    public static String getDate() {
-        return date;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_booking);
-
+        Intent intent = getIntent();
+        charityName = intent.getStringExtra("Charity");
         confirmDateBtn = (Button) findViewById(R.id.confirmDateBtn);
         calendarView = (CalendarView) findViewById(R.id.calendarView);
 
@@ -40,7 +37,9 @@ public class AddBooking extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("'date' on Selection", date);
-                Intent intent = new Intent(AddBooking.this, MainActivity.class);
+                Intent intent = new Intent(AddBooking.this, SelectTime.class);
+                intent.putExtra("Charity", charityName);
+                intent.putExtra("Date", date);
                 startActivity(intent);
 
             }

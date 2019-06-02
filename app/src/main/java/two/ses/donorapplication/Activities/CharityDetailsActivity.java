@@ -53,8 +53,8 @@ public class CharityDetailsActivity extends AppCompatActivity {
     }
     @OnClick(R.id.btn_booking)
     public void addBooking(){
-        Intent i = new Intent(this, SelectTime.class);
-        i.putExtra("Charity", tv_name.getText());
+        Intent i = new Intent(this, AddBooking.class);
+        i.putExtra("Charity", model.getName());
         startActivity(i);
     }
 }

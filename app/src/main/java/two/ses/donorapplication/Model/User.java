@@ -6,11 +6,20 @@ public class User {
     private String group;
     private String address;
     private Integer phone;
+    private String eventIDS[];
 
     public User(){
 
     }
 
+    public User(String name, String email, String group, String address, Integer phone, String eventIDS[]) {
+        this.name = name;
+        this.email = email;
+        this.group = group;
+        this.address = address;
+        this.phone = phone;
+        this.eventIDS = eventIDS;
+    }
     public User(String name, String email, String group, String address, Integer phone) {
         this.name = name;
         this.email = email;
@@ -58,8 +67,9 @@ public class User {
     public Integer getPhone() {
         return phone;
     }
-//    public void setEventIDS(Event[] events){
-//        this.eventIDS = eventIDS;
-//    }
-//    public String[] getEventIDS() {return eventIDS;}
+
+    public void setEventIDS(Event[] events){
+        this.eventIDS = eventIDS;
+    }
+    public String[] getEventIDS() {return eventIDS;}
 }
