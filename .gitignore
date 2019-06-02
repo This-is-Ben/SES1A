@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Created by https://www.gitignore.io/api/androidstudio
 
 ### AndroidStudio ###
@@ -116,3 +117,7 @@ functions/email-confirmation/*node_modules/
 functions/email-confirmation/.env.yml
 
 # End of https://www.gitignore.io/api/androidstudio
+=======
+.gradle/
+.idea/
+>>>>>>> fix

@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+<<<<<<< HEAD
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +29,9 @@ import java.util.ArrayList;
 import two.ses.donorapplication.Activities.DonorListActivity;
 import two.ses.donorapplication.Adapter.CharityAdapter;
 import two.ses.donorapplication.Model.CharityModel;
+=======
+import butterknife.ButterKnife;
+>>>>>>> fix
 import two.ses.donorapplication.R;
 
 /**
@@ -39,11 +43,17 @@ import two.ses.donorapplication.R;
  * <p>
  */
 public class SearchFragment extends Fragment {
+<<<<<<< HEAD
     private static final String TAG = "SearchFragment";
     private Context context;
     private View view;
     RecyclerView rv_charity;
     EditText input_charity_name;
+=======
+    // Note how Butter Knife also works on Fragments, but here it is a little different
+    //@BindView(R.id.blank_frag_msg)
+    TextView blankFragmentTV;
+>>>>>>> fix
 
     ArrayList<CharityModel> charityOriginal, charityAdpModel;
     DatabaseReference CharityDataref;

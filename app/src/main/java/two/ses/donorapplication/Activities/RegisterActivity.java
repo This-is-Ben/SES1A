@@ -45,6 +45,10 @@ public class RegisterActivity extends AppCompatActivity {
     RadioGroup radioGroup;
     @BindView(R.id.categoriesSP)
     Spinner categoriesSpinner;
+    @BindView(R.id.addressET)
+    EditText addressEditText;
+    @BindView(R.id.phoneET)
+    EditText phoneEditText;
 
     private static String TAG = "RegisterActivity";
 
@@ -115,8 +119,9 @@ public class RegisterActivity extends AppCompatActivity {
         final String password = passwordEditText.getText().toString();
         final String confirm = confirmEditText.getText().toString();
         final String name = nameEditText.getText().toString();
+        final String address = addressEditText.getText().toString();
+        final Integer phone = Integer.valueOf(phoneEditText.getText().toString());
         //Check which group is selected
-        progressDialog.show();
         radioButton = (RadioButton) findViewById(radioGroup.getCheckedRadioButtonId());
         final String group = radioButton.getText().toString();
         final String category = categoriesSpinner.getSelectedItem().toString();
@@ -156,7 +161,9 @@ public class RegisterActivity extends AppCompatActivity {
                             User user = new User(
                                     name,
                                     username,
-                                    group
+                                    group,
+                                    address,
+                                    phone
                             );
                             //Add user to correct group with categories if charity was selected
                             if(group.equals("Donor")){
@@ -176,7 +183,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
                                         toastMessage("User Registered Successfully");
-                                        progressDialog.dismiss();
                                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                         startActivity(intent);
                                         finish();
